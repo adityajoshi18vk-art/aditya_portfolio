@@ -85,50 +85,61 @@ window.addEventListener("scroll", () => {
 });
 
 
-// ========== EmailJS Contact Form ==========
+// ========== Formspree Contact Form ==========
 
-// TODO: Replace these 3 values with your actual EmailJS credentials
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";      // From EmailJS → Account → Public Key
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";      // From EmailJS → Email Services
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";    // From EmailJS → Email Templates
-
-emailjs.init(EMAILJS_PUBLIC_KEY);
+// TODO: 1. Create a free account at https://formspree.io/
+// TODO: 2. Create a new form and copy the "Unique ID" or "Endpoint URL"
+// TODO: 3. Paste your ID here:
+const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
 
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 
-contactForm.addEventListener("submit", (e) => {
+contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Disable button while sending
     const submitBtn = contactForm.querySelector(".contact-btn");
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
     formStatus.textContent = "";
-    formStatus.style.color = "";
 
-    // Diagnostic: Check if keys are still placeholders
-    if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID") {
-        formStatus.textContent = "⚠️ Please set up your EmailJS credentials in script.js to enable the form.";
+    // Diagnostic: Check if ID is still placeholder
+    if (FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
+        formStatus.textContent = "⚠️ Please set up your Formspree ID in script.js to enable the form.";
         formStatus.style.color = "#fbbf24";
         submitBtn.disabled = false;
         submitBtn.textContent = "Send Message →";
         return;
     }
 
-    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
-        .then(() => {
+    const formData = new FormData(contactForm);
+    const formObject = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: 'POST',
+            body: JSON.stringify(formObject),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
             formStatus.textContent = "✅ Message sent successfully! I'll get back to you soon.";
             formStatus.style.color = "#4ade80";
             contactForm.reset();
-        })
-        .catch((error) => {
-            console.error("EmailJS Error:", error);
-            formStatus.textContent = "❌ Failed to send message. Please ensure your Service & Template IDs are correct.";
+        } else {
+            const data = await response.json();
+            formStatus.textContent = "❌ Error: " + (data.error || "Failed to send message. Please try again.");
             formStatus.style.color = "#f87171";
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Send Message →";
-        });
+        }
+    } catch (error) {
+        console.error("Form Error:", error);
+        formStatus.textContent = "❌ Critical failure. Check your internet connection or Formspree ID.";
+        formStatus.style.color = "#f87171";
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message →";
+    }
 });

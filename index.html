@@ -18,8 +18,6 @@
 
     <!--Dev Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-    <!-- Contact Form API (Formspree) -->
 </head>
 
 <body>
@@ -29,18 +27,17 @@
         <nav class="navbar">
             <div class="logo">AJ</div>
 
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#achievements">Acheievements</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <div class="theme-toggle" id="theme-toggle">🌙</div>
-            <div class="menu-toggle" id="menuToggle">☰</div>
+            <div class="theme-toggle">🌙</div>
         </nav>
     </header>
 
@@ -60,7 +57,7 @@
 
             <div class="hero-buttons">
                 <a href="#projects" class="btn-primary">View Projects</a>
-                <a href="#contact" class="btn-secondary">Contact Me</a>
+                <a href="#Contact Me" class="btn-secondary">Contact Me</a>
             </div>
         </div>
 
@@ -73,7 +70,7 @@
 
     <!-- About -->
 
-    <section id="about" class="section reveal-on-scroll">
+    <section id="about" class="section reveal">
         <h2 class=section-title>About Me</h2>
         <p class="about-subtitle">My Education Journey and learning Mindset</p>
 
@@ -127,7 +124,7 @@
                     <h4>Currently Pursuing</h4>
                     <h3>B.Tech in Computer Science and Engineering </h3>
                     <p>SRM University Ap</p>
-                    <span class="badge badge-green">2nd Semester</span> <span class="badge">Grade • 8.5 </span>
+                    <span class="badge">2nd Semester</span> <span class="badge">Grade • 8.5 </span>
 
                 </div>
             </div>
@@ -136,7 +133,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="section reveal-on-scroll">
+    <section id="skills" class="section">
         <h2 class="section-title">My Skills</h2>
         <p class="section-subtitle">
             Technologies I'm currently comfortable with and exploring
@@ -222,7 +219,7 @@
 
 
     <!-- Projects Section -->
-    <section id="projects" class="section reveal-on-scroll">
+    <section id="projects" class="section">
 
         <h2 class="section-title">Projects</h2>
 
@@ -267,21 +264,53 @@
 
                 <div class="project-content">
 
-                    <h3>Digital Will</h3>
+                    <h3> ChainProof
+                        "Trustless bug bounties — exploits verified on-chain, rewards paid automatically."</h3>
 
                     <p>
-                        Conceptual platform solving the crisis of digital inheritance.
-                        Focuses on secure access orchestration for digital assets
-                        without storing sensitive data directly.
+                        TrustBounty — Decentralized Zero-Trust Bug Bounty Platform
+                        A full-stack Web3 project where companies lock ETH rewards into a Solidity smart contract on
+                        Ethereum Sepolia, hackers submit AES-256 encrypted exploit reports via IPFS, and an autonomous
+                        oracle verifies exploits inside an isolated Docker sandbox before triggering automatic on-chain
+                        payment. Built with Solidity, Node.js, ethers.js v6, Docker, and IPFS — with zero reliance on
+                        any central authority for fund custody, exploit verification, or reward distribution.
                     </p>
 
                     <div class="project-tech">
                         <span>Security</span>
-                        <span>Concept</span>
+                        <span>Blockchain</span>
                     </div>
 
                     <div class="project-links">
-                        <a href="https://github.com/Praneeth0910/Digital_will">GitHub</a>
+                        <a href="https://github.com/adityajoshi18vk-art/Decentralized-Zero-trust-Bug-Bounty">GitHub</a>
+                        <a href="#">Live Demo</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+
+            <div class="project-card">
+
+                <div class="project-content">
+
+                    <h3>Aegis Robotics</h3>
+
+                    <p>
+                        A zero-shot imitation learning pipeline for humanoid robots. By combining a multimodal LLM for
+                        motion generation with a local TensorFlow-based safety classifier, this system allows users to
+                        intuitively program robots via video while strictly preventing the execution of harmful
+                        behaviors.
+                    </p>
+
+                    <div class="project-tech">
+                        <span>Robotics</span>
+                        <span>AI</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/adityajoshi18vk-art/motion-memory-core">GitHub</a>
                         <a href="#">Live Demo</a>
                     </div>
 
@@ -294,7 +323,7 @@
 
 
     <!-- Achievements Section -->
-    <section id="achievements" class="section reveal-on-scroll">
+    <section id="achievements" class="section">
 
         <h2 class="section-title">Achievements</h2>
 
@@ -313,7 +342,7 @@
                     <h3>NULL Point CTF </h3>
 
                     <p>
-                        Won 2nd Prize in Documentation and Writing cateogary in NULL Point CTF Orgainized in our
+                        Won 2nd Prize in Documentation and Writing category in NULL Point CTF Organized in our
                         University
                     </p>
 
@@ -331,13 +360,65 @@
 
             </div>
 
+            <!-- Achievement 2 -->
+
+            <div class="achievement-card">
+
+                <div class="achievement-text">
+
+                    <h3>X<sub>3</sub> Hackathon </h3>
+
+                    <p>
+                        Won 1st Prize in X<sub>3</sub> Hackathon Organized by AWS Cloud Club SRM AP
+                    </p>
+
+                    <div class="achievement-tags">
+                        <span>Robotics And Aiml</span>
+                    </div>
+
+                </div>
+
+                <div class="achievement-image">
+
+                    <img src="images/X3 hackathon.jpeg" alt="Hackathon Trophy">
+
+                </div>
+
+            </div>
+
+            <!-- Achievement 3 -->
+
+            <div class="achievement-card">
+
+                <div class="achievement-text">
+
+                    <h3>BlockForge Hackathon</h3>
+
+                    <p>
+                        Got 2nd Runner Up in BlockForge Mini Hackathon organised by Team1 Blockchain and Hackshastra
+                    </p>
+
+                    <div class="achievement-tags">
+                        <span>Blockchain</span>
+                    </div>
+
+                </div>
+
+                <div class="achievement-image">
+
+                    <img src="images/Blockforge Hackathon.jpeg" alt="Hackathon Trophy">
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
 
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section reveal-on-scroll">
+    <section id="gallery" class="section">
 
         <p class="gallery-tag">CAPTURED MOMENTS</p>
 
@@ -358,7 +439,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section reveal-on-scroll">
+    <section id="contact" class="section">
 
         <p class="contact-tag">GET IN TOUCH</p>
 
@@ -386,10 +467,10 @@
                 <form class="contact-form" id="contact-form">
 
                     <label>Your Name</label>
-                    <input type="text" name="from_name" placeholder="Enter your name" required>
+                    <input type="text" name="name" placeholder="Enter your name" required>
 
                     <label>Your Email</label>
-                    <input type="email" name="from_email" placeholder="your.email@example.com" required>
+                    <input type="email" name="email" placeholder="your.email@example.com" required>
 
                     <label>Subject</label>
                     <input type="text" name="subject" placeholder="What's this about?" required>
@@ -401,7 +482,7 @@
                         Send Message →
                     </button>
 
-                    <p id="form-status" style="margin-top: 10px; font-size: 0.9rem;"></p>
+                    <p id="form-status" style="margin-top: 15px; font-weight: 500; font-size: 0.95rem;"></p>
 
                 </form>
 
@@ -421,47 +502,55 @@
 
                     <p>Prefer a direct approach? Reach out through any of these channels.</p>
 
-                    <!-- Email -->
-                    <a href="mailto:adityajoshi18vk@gmail.com" class="contact-item">
+                    <div class="contact-item">
+
                         <i class="fa-solid fa-envelope"></i>
+
                         <div>
                             <p class="contact-label">EMAIL</p>
                             <span>adityajoshi18vk@gmail.com</span>
                         </div>
-                    </a>
 
-                    <!-- Phone -->
-                    <a href="tel:+918431848445" class="contact-item">
+                    </div>
+
+                    <div class="contact-item">
+
                         <i class="fa-solid fa-phone"></i>
+
                         <div>
                             <p class="contact-label">PHONE</p>
                             <span>+91 8431848445</span>
                         </div>
-                    </a>
 
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/aditya-joshi-659001350/" target="_blank" class="contact-item">
+                    </div>
+
+                    <div class="contact-item">
+
                         <i class="fa-brands fa-linkedin"></i>
+
                         <div>
                             <p class="contact-label">LINKEDIN</p>
                             <span>Connect with me</span>
                         </div>
-                    </a>
 
-                    <!-- GitHub -->
-                    <a href="https://github.com/adityajoshi18vk-art" target="_blank" class="contact-item">
+                    </div>
+
+                    <div class="contact-item">
+
                         <i class="fa-brands fa-github"></i>
+
                         <div>
                             <p class="contact-label">GITHUB</p>
                             <span>View my code</span>
                         </div>
-                    </a>
+
+                    </div>
 
                 </div>
+
             </div>
 
         </div>
-
 
     </section>
 
@@ -488,7 +577,7 @@
 
         </div>
         <p class="copyright">
-            © 2026 | Made with <i class="fa-solid fa-heart"></i> by Aditya
+            Made with <i class="fa-solid fa-heart"></i> by Aditya
         </p>
 
 

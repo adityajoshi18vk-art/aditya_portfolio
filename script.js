@@ -1,38 +1,40 @@
 // Theme Toggle (Dark/Light Mode)
-const themeToggle = document.getElementById("theme-toggle");
+const themeToggle = document.querySelector(".theme-toggle");
 const body = document.body;
 
 // Check for saved theme preference
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "light") {
     body.classList.add("light-mode");
-    themeToggle.textContent = "☀️";
+    if(themeToggle) themeToggle.textContent = "☀️";
 }
 
-themeToggle.onclick = () => {
-    body.classList.toggle("light-mode");
-    const isLight = body.classList.contains("light-mode");
-    themeToggle.textContent = isLight ? "☀️" : "🌙";
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+if(themeToggle) {
+    themeToggle.onclick = () => {
+        body.classList.toggle("light-mode");
+        const isLight = body.classList.contains("light-mode");
+        themeToggle.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
 }
 
 
 // mobile menu
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.querySelector(".nav-links");
 
-const menuToggle = document.getElementById("menuToggle")
-const navLinks = document.getElementById("navLinks")
-
-menuToggle.onclick = () => {
-    navLinks.classList.toggle("active")
+if(menuToggle && navLinks) {
+    menuToggle.onclick = () => {
+        navLinks.classList.toggle("active");
+    }
 }
-
 
 // close menu after clicking link
 
 document.querySelectorAll(".nav-links a").forEach(link => {
 
     link.addEventListener("click", () => {
-        navLinks.classList.remove("active")
+        if(navLinks) navLinks.classList.remove("active");
     })
 
 })
@@ -85,12 +87,10 @@ window.addEventListener("scroll", () => {
 });
 
 
-// ========== Formspree Contact Form ==========
+// ========== Web3Forms Contact Form ==========
 
-// TODO: 1. Create a free account at https://formspree.io/
-// TODO: 2. Create a new form and copy the "Unique ID" or "Endpoint URL"
-// TODO: 3. Paste your ID here:
-const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+// Paste your Web3Forms Access Key here
+const WEB3FORMS_API_KEY = "fe99f1e4-2dc0-4e3b-a633-abdad5f5a4a2";
 
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
@@ -103,9 +103,9 @@ contactForm.addEventListener("submit", async (e) => {
     submitBtn.textContent = "Sending...";
     formStatus.textContent = "";
 
-    // Diagnostic: Check if ID is still placeholder
-    if (FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
-        formStatus.textContent = "⚠️ Please set up your Formspree ID in script.js to enable the form.";
+    // Diagnostic: Check if API Key is still placeholder
+    if (WEB3FORMS_API_KEY === "YOUR_WEB3FORMS_API_KEY" || !WEB3FORMS_API_KEY) {
+        formStatus.textContent = "⚠️ Please paste your Web3Forms API Key in script.js to enable the form.";
         formStatus.style.color = "#fbbf24";
         submitBtn.disabled = false;
         submitBtn.textContent = "Send Message →";
@@ -114,9 +114,10 @@ contactForm.addEventListener("submit", async (e) => {
 
     const formData = new FormData(contactForm);
     const formObject = Object.fromEntries(formData.entries());
+    formObject.access_key = WEB3FORMS_API_KEY;
 
     try {
-        const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        const response = await fetch("https://api.web3forms.com/submit", {
             method: 'POST',
             body: JSON.stringify(formObject),
             headers: {
@@ -131,12 +132,12 @@ contactForm.addEventListener("submit", async (e) => {
             contactForm.reset();
         } else {
             const data = await response.json();
-            formStatus.textContent = "❌ Error: " + (data.error || "Failed to send message. Please try again.");
+            formStatus.textContent = "❌ Error: " + (data.message || "Failed to send message. Please try again.");
             formStatus.style.color = "#f87171";
         }
     } catch (error) {
         console.error("Form Error:", error);
-        formStatus.textContent = "❌ Critical failure. Check your internet connection or Formspree ID.";
+        formStatus.textContent = "❌ Critical failure. Please check your internet connection.";
         formStatus.style.color = "#f87171";
     } finally {
         submitBtn.disabled = false;

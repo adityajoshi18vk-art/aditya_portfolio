@@ -31,6 +31,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
@@ -38,6 +40,8 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* Scroll Reveal Animation */
@@ -553,63 +557,7 @@ body {
     border-radius: 0.6rem;
 }
 
-/* Achievement responsive */
-@media(max-width:768px) {
 
-    .achievements-container {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 1.5rem;
-        -webkit-overflow-scrolling: touch;
-        gap: 1.5rem;
-    }
-
-    .achievement-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-        flex: 0 0 85%;
-        scroll-snap-align: center;
-    }
-
-    .achievement-image img {
-        margin: auto;
-    }
-
-    .projects-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 1.5rem;
-        -webkit-overflow-scrolling: touch;
-        gap: 1.5rem;
-    }
-    
-    .project-card {
-        flex: 0 0 85%;
-        scroll-snap-align: center;
-    }
-
-    .gallery-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 1.5rem;
-        -webkit-overflow-scrolling: touch;
-        gap: 1.5rem;
-    }
-
-    .gallery-container img {
-        flex: 0 0 80%;
-        scroll-snap-align: center;
-    }
-    
-    .hero-buttons {
-        justify-content: center;
-    }
-
-}
 
 /* Gallery Section */
 /* GALLERY HEADER */
@@ -966,4 +914,62 @@ body {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+}
+
+/* Mobile Carousels and Layout */
+@media(max-width:768px) {
+
+    .achievements-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+
+    .achievement-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .achievement-image img {
+        margin: auto;
+    }
+
+    .projects-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .gallery-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+
+    .gallery-container img {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+
 }

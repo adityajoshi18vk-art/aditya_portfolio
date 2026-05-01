@@ -1,6 +1,6 @@
 :root {
     --bg-color: #0f172a;
-    --navbar-bg: #111827;
+    --navbar-bg: rgba(17, 24, 39, 0.85);
     --card-bg: #1e293b;
     --text-color: #ffffff;
     --subtitle-color: #94a3b8;
@@ -12,7 +12,7 @@
 
 .light-mode {
     --bg-color: #f8fafc;
-    --navbar-bg: #ffffff;
+    --navbar-bg: rgba(255, 255, 255, 0.85);
     --card-bg: #ffffff;
     --text-color: #1e293b;
     --subtitle-color: #64748b;
@@ -60,6 +60,8 @@ body {
     align-items: center;
     padding: 1.2rem 8%;
     background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -97,7 +99,7 @@ body {
         right: -100%;
         width: 70%;
         height: 100vh;
-        background: #111827;
+        background: var(--bg-color);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -411,6 +413,12 @@ body {
     min-width: 35px;
 }
 
+.skill-text {
+    flex: 1;
+    text-align: center;
+    padding-right: 35px; /* Offset to perfectly center against the left icon */
+}
+
 .skill-text h4 {
     margin-bottom: 0.2rem;
 }
@@ -548,13 +556,57 @@ body {
 /* Achievement responsive */
 @media(max-width:768px) {
 
+    .achievements-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+
     .achievement-card {
         grid-template-columns: 1fr;
         text-align: center;
+        flex: 0 0 85%;
+        scroll-snap-align: center;
     }
 
     .achievement-image img {
         margin: auto;
+    }
+
+    .projects-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .gallery-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+    }
+
+    .gallery-container img {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
     }
 
 }
@@ -886,17 +938,32 @@ body {
 
 @media (max-width:600px) {
 
-    .nav-links {
-        display: none;
-    }
-
     .hero-right img {
         width: 13rem;
         height: 13rem;
     }
 
     .section {
-        padding: 3.5rem 7%;
+        padding: 2.5rem 5%;
+    }
+    
+    .section-title {
+        margin-bottom: 1rem;
     }
 
+}
+
+/* Hide scrollbar for carousels */
+@media (max-width:768px) {
+    .projects-container::-webkit-scrollbar,
+    .achievements-container::-webkit-scrollbar,
+    .gallery-container::-webkit-scrollbar {
+        display: none;
+    }
+    .projects-container,
+    .achievements-container,
+    .gallery-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }

@@ -22,22 +22,47 @@ if(themeToggle) {
 // mobile menu
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.querySelector(".nav-links");
+const navOverlay = document.getElementById("navOverlay");
+const menuIcon = menuToggle ? menuToggle.querySelector("i") : null;
 
-if(menuToggle && navLinks) {
-    menuToggle.onclick = () => {
-        navLinks.classList.toggle("active");
+function closeMenu() {
+    if(navLinks) navLinks.classList.remove("active");
+    if(navOverlay) navOverlay.classList.remove("active");
+    if(menuIcon) {
+        menuIcon.classList.remove("fa-xmark");
+        menuIcon.classList.add("fa-bars");
+    }
+    document.body.style.overflow = "auto";
+}
+
+function toggleMenu() {
+    if (!navLinks) return;
+    const isActive = navLinks.classList.contains("active");
+    if (isActive) {
+        closeMenu();
+    } else {
+        navLinks.classList.add("active");
+        if(navOverlay) navOverlay.classList.add("active");
+        if(menuIcon) {
+            menuIcon.classList.remove("fa-bars");
+            menuIcon.classList.add("fa-xmark");
+        }
+        document.body.style.overflow = "hidden";
     }
 }
 
+if(menuToggle) {
+    menuToggle.addEventListener("click", toggleMenu);
+}
+
+if(navOverlay) {
+    navOverlay.addEventListener("click", closeMenu);
+}
+
 // close menu after clicking link
-
 document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-        if(navLinks) navLinks.classList.remove("active");
-    })
-
-})
+    link.addEventListener("click", closeMenu);
+});
 
 
 // navbar shadow when scrolling

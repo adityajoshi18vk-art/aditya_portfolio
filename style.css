@@ -400,6 +400,21 @@ body {
     margin: auto;
 }
 
+.skills-container.single-box {
+    grid-template-columns: 1fr;
+    max-width: 950px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+
+.skills-grid .skill-item {
+    margin-bottom: 0;
+}
+
 .skills-box {
     background: var(--card-bg);
     padding: 2rem;
